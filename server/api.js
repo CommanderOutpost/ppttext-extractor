@@ -4,9 +4,11 @@ const errorhandler = require('errorhandler');
 const apiRouter = express.Router();
 
 const powerpointRouter = require('./powerpointRouter');
+const uploadFileRouter = require('./uploadFile');
 
 apiRouter.use(morgan('dev'));
-apiRouter.use('/results', powerpointRouter);
+apiRouter.use('/uploadFile', uploadFileRouter);
+apiRouter.use('/powerpoint', powerpointRouter);
 
 apiRouter.use(errorhandler(), (err, req, res, next) => {
     if (!err.status) {
