@@ -8,16 +8,12 @@ const apiRouter = express.Router();
 
 // Import specific routers for different parts of the API.
 const powerpointRouter = require('./powerpointRouter'); // Handles PowerPoint-related routes.
-const uploadFileRouter = require('./uploadFile'); // Handles file upload routes.
 
 // Use Morgan middleware for logging HTTP request details in a 'dev' format.
 apiRouter.use(morgan('dev'));
 
-// Mount the 'uploadFileRouter' at the '/uploadFile' endpoint.
-apiRouter.use('/uploadFile', uploadFileRouter);
-
-// Mount the 'powerpointRouter' at the '/powerpoint' endpoint.
-apiRouter.use('/powerpoint', powerpointRouter);
+// Mount the 'powerpointRouter' at the '/extract/powerpoint' endpoint.
+apiRouter.use('/extract/powerpoint', powerpointRouter);
 
 // Error handling middleware to catch and handle errors in the API.
 apiRouter.use(

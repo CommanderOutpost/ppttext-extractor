@@ -6,23 +6,19 @@ form.addEventListener("submit", submitForm);
 async function uploadFile(data) {
     try {
         // Send a POST request to the "api/uploadFile" endpoint with the provided data.
-        const response = await fetch("api/uploadFile", {
+        const response = await fetch("api/extract/powerpoint", {
             method: 'POST',
             body: data
         });
 
-        // Check if the response status is OK (in the range 200-299).
         if (response.ok) {
-            // If the response is successful, parse the JSON response.
             const responseJson = response.json();
             return responseJson;
         }
 
-        // If the response is not OK, throw an error indicating a failed request.
         throw new Error('Request failed!');
 
     } catch (error) {
-        // If there's an error during the process, log the error to the console for debugging.
         console.log(error);
     }
 }
