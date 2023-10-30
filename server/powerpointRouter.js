@@ -11,7 +11,7 @@ const upload = multer({ dest: "uploads/" });
 // This route is responsible for handling file uploads.
 powerpointRouter.post("/", upload.single("file"), async (req, res) => {
     try {
-        const pythonProcess = await spawnSync('python2', ['server/scripts/powerpoint_text_extractor.py']);
+        const pythonProcess = await spawnSync('python3', ['server/scripts/powerpoint_text_extractor.py']);
         const result = pythonProcess.stdout?.toString()?.trim();
         const error = pythonProcess.stderr?.toString()?.trim();
         console.log(result);

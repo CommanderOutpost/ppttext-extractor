@@ -2,15 +2,25 @@ import os
 from pptx import Presentation
 
 # Specify the uploads directory path
-uploads_directory = 'uploads'
+uploads_directory = "uploads"
 
 # List all files in the uploads directory
-files = os.listdir(uploads_directory)
-print(files)
+pptx_files = os.listdir(uploads_directory)
 
 
-# Filter out only files with a .pptx extension
-pptx_files = [file for file in files if file.endswith(".pptx")]
+def extract_text_from_pptx(pptx_file):
+    prs = Presentation(pptx_file)
+    all_text = []
+
+    for slide in prs.slides:
+        for shape in slide.shapes:
+            if shape.has_text_frame:
+                for paragraph in shape.text_frame.paragraphs:
+                    for run in paragraph.runs:
+                        all_text.append(run.text)
+
+    return "\n".join(all_text)
+
 
 if pptx_files:
     # Get the first .pptx file in the directory
@@ -23,5 +33,7 @@ if pptx_files:
     # Print the extracted text
     print("Extracted Text:")
     print(extracted_text)
+    os.remove(first_pptx_file)
+    
 else:
     print("No .pptx files found in the uploads directory.")
