@@ -30,22 +30,16 @@ function submitForm(e) {
     // Prevent the default form submission behavior, which would cause a page reload.
     e.preventDefault();
 
-    // Get references to the "name" and "files" input elements in the form.
-    const name = document.getElementById("name");
+    // Get references to and "files" input elements in the form.
     const files = document.getElementById("files");
 
     // Create a new FormData object to prepare data for submission.
     const formData = new FormData();
 
-    // Append the value of the "name" input field to the formData.
-    formData.append("name", name.value);
-
     // Loop through the selected files in the "files" input field and append them to formData.
     for (let i = 0; i < files.files.length; i++) {
         formData.append("file", files.files[i]);
     }
-
-    console.log(formData);
 
     // Call the uploadFile function to handle the upload of the form data.
     renderExtractedText(formData);
