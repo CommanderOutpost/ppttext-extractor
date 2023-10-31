@@ -28,6 +28,13 @@ form input {
   width: 100%;
   border: 1px solid #ccc;
 }
+#files:hover {
+  cursor: pointer;
+  /* background-color: lightgray; */
+}
+button:hover {
+  cursor: pointer;
+}
 .submit-btn {
   width: 100%;
   border: none;
@@ -38,6 +45,9 @@ form input {
   padding: 20px;
   text-align: center;
 }
+.submit-btn:hover {
+  background-color: rgb(37, 70, 3);
+}
 .output-text-container {
   /* display: none; */
   width: 500px; /* Set the width as needed */
@@ -45,4 +55,6 @@ form input {
   overflow: auto; /* Add a scroll bar when content overflows */
   border: 1px solid #ccc; /* Add a border for aesthetics */
   background-color: white;
+  box-sizing: border-box;
+  padding: 20px;
 }

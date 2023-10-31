@@ -1,9 +1,10 @@
 const form = document.getElementById("form");
+const outputTextArea = document.querySelector('.output-text-container');
 
 form.addEventListener("submit", submitForm);
 
 // This asynchronous function is responsible for uploading a file to the server.
-async function uploadFile(data) {
+async function extractText(data) {
     try {
         // Send a POST request to the "api/uploadFile" endpoint with the provided data.
         const response = await fetch("api/extract/powerpoint", {
@@ -13,8 +14,7 @@ async function uploadFile(data) {
 
         if (response.ok) {
             const responseJson = await response.json();
-            console.log(responseJson);
-            return responseJson;
+            return responseJson.extractedText;
         }
 
         throw new Error('Request failed!');
@@ -45,8 +45,14 @@ function submitForm(e) {
         formData.append("file", files.files[i]);
     }
 
+    console.log(formData);
+
     // Call the uploadFile function to handle the upload of the form data.
-    uploadFile(formData);
+    renderExtractedText(formData);
 }
 
-console.log('hello');
+async function renderExtractedText(data) {
+    const extractedText = await extractText(data);
+    outputTextArea.innerHTML = extractedText;
+    // outputTextArea.display = 'block';
+}

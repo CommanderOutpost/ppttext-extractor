@@ -6,17 +6,18 @@ const { unlink } = require('fs');
 const powerpointRouter = express.Router();
 
 // Configure Multer for handling file uploads. Files will be stored in the 'uploads/' directory.
-const upload = multer({ dest: "server/uploads/" });
+const upload = multer({ dest: 'server/uploads/' });
 
 // Define a POST route at the root endpoint of the 'uploadFileRouter'.
 // This route is responsible for handling file uploads.
-powerpointRouter.post("/", upload.single("file"), async (req, res) => {
+powerpointRouter.post('/', upload.single('file'), async (req, res) => {
+
     try {
         const pythonProcess = await spawnSync('python3', ['server/scripts/powerpoint_text_extractor.py']);
         const error = pythonProcess.stderr?.toString()?.trim();
 
         if (error) {
-            console.error(error);
+            throw new Error(error);
         }
 
         const filePath = 'server/extracted_text.txt';
@@ -30,11 +31,11 @@ powerpointRouter.post("/", upload.single("file"), async (req, res) => {
             }
         });
 
-        res.json({ extractedText: extractedText });
+        res.json({ extractedText });
 
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: "Internal Server Error" });
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 });
 
