@@ -2,38 +2,41 @@ const express = require('express');
 const multer = require('multer');
 const { spawnSync } = require('child_process');
 const { readFile } = require('fs/promises');
+const { unlink } = require('fs');
 const powerpointRouter = express.Router();
 
 // Configure Multer for handling file uploads. Files will be stored in the 'uploads/' directory.
-const upload = multer({ dest: "uploads/" });
+const upload = multer({ dest: "server/uploads/" });
 
 // Define a POST route at the root endpoint of the 'uploadFileRouter'.
 // This route is responsible for handling file uploads.
 powerpointRouter.post("/", upload.single("file"), async (req, res) => {
     try {
         const pythonProcess = await spawnSync('python3', ['server/scripts/powerpoint_text_extractor.py']);
-        const result = pythonProcess.stdout?.toString()?.trim();
         const error = pythonProcess.stderr?.toString()?.trim();
-        console.log(result);
 
         if (error) {
             console.error(error);
         }
 
-        const status = result === 'OK';
-        if (status) {
-            const buffer = await readFile('/usr/src/app/scripts/results.json');
-            const resultParsed = JSON.parse(buffer?.toString());
-            console.log(resultParsed);
-        }
-        res.json({ message: "Successfully uploaded files" });
+        const filePath = 'server/extracted_text.txt';
+
+        const extractedText = await readFile(filePath, 'utf-8');
+
+        unlink(filePath, (err) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+        });
+
+        res.json({ extractedText: extractedText });
 
     } catch (error) {
-        console.error("An error occurred:", error);
+        console.error(error);
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
-
 
 // Export the 'powerpointRouter' to make it available for use in the application.
 module.exports = powerpointRouter;

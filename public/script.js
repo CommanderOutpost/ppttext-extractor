@@ -12,7 +12,8 @@ async function uploadFile(data) {
         });
 
         if (response.ok) {
-            const responseJson = response.json();
+            const responseJson = await response.json();
+            console.log(responseJson);
             return responseJson;
         }
 
@@ -47,3 +48,5 @@ function submitForm(e) {
     // Call the uploadFile function to handle the upload of the form data.
     uploadFile(formData);
 }
+
+console.log('hello');

@@ -2,7 +2,7 @@ import os
 from pptx import Presentation
 
 # Specify the uploads directory path
-uploads_directory = "uploads"
+uploads_directory = "server/uploads"
 
 # List all files in the uploads directory
 pptx_files = os.listdir(uploads_directory)
@@ -25,15 +25,15 @@ def extract_text_from_pptx(pptx_file):
 if pptx_files:
     # Get the first .pptx file in the directory
     first_pptx_file = os.path.join(uploads_directory, pptx_files[0])
-    print("First .pptx file in the uploads directory:", first_pptx_file)
+    # print("First .pptx file in the uploads directory:", first_pptx_file)
 
     # Now, you can extract text from the first .pptx file
     extracted_text = extract_text_from_pptx(first_pptx_file)
 
-    # Print the extracted text
-    print("Extracted Text:")
-    print(extracted_text)
     os.remove(first_pptx_file)
-    
+    f = open("server/extracted_text.txt", "x")
+    f.write(extracted_text)
+    f.close()
+
 else:
     print("No .pptx files found in the uploads directory.")
