@@ -14,7 +14,7 @@
     "txt"
   ],
   "author": "commanderoutpost",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
