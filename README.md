@@ -2,11 +2,11 @@
 Welcome to the PPTText Extractor, a web application that allows you to easily extract text from PowerPoint (PPTX) files. This web app is a handy tool for those, who want to work with text data from presentations.
 
 ## Table of Contents
-1. Introduction
-2. Features
-3. Getting Started
-4. Usage
-5. Technical Details
+1. [Introduction](## 1. Introduction)
+2. [Features](## 2. Features)
+3. [Getting Started](## 3. Getting Started)
+4. [Usage](## 4. Usage)
+5. [Technical Details](## 5. Technical Details)
 
 ## 1. Introduction
 In the field of software engineering, you may often come across PPTX files containing valuable information. This web app simplifies the process of extracting text from these files, making it easier for you to work with the data in your software projects.
