@@ -26,18 +26,18 @@ To get started with the PPTText Extractor, follow these simple steps:
 3. Press the "Extract" button, and the web app will process the file and display the extracted text.
 
 
-4. Usage
+## 4. Usage
 This web app can be used in various scenarios:
 
-Research: Extract text from PPTX files for research purposes.
+* Research: Extract text from PPTX files for research purposes.
 
-Content Analysis: Analyze the content of presentations quickly.
+* Content Analysis: Analyze the content of presentations quickly.
 
-Data Extraction: Easily convert presentation text into structured data for further processing.
+* Data Extraction: Easily convert presentation text into structured data for further processing.
 
-5. Technical Details
-Backend: The app's backend is built using node.js and python with the express framework on node.js.
+## 5. Technical Details
+* Backend: The app's backend is built using node.js and python with the express framework on node.js.
 
-Frontend: The user interface is designed with HTML, CSS and JavaScript.
+* Frontend: The user interface is designed with HTML, CSS and JavaScript.
 
-Text Extraction: Text extraction from PPTX files is achieved using python-pptx.
+* Text Extraction: Text extraction from PPTX files is achieved using python-pptx.
