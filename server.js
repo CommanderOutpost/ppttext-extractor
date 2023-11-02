@@ -2,6 +2,20 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const { spawnSync } = require('child_process');
+
+
+try {
+  const pythonProcess = spawnSync('python3', [`server/scripts/install_package.py`], { stdio: 'inherit' });
+  const error = pythonProcess.stderr?.toString()?.trim();
+
+  if (error) {
+    console.error(error);
+  }
+
+} catch (error) {
+  console.error(error);
+}
 
 // Create an Express application.
 const app = express();
