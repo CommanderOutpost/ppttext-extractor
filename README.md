@@ -19,7 +19,7 @@ In the field of software engineering, you may often come across PPTX files conta
 ## 3. Getting Started
 To get started with the PPTText Extractor, follow these simple steps:
 
-1. Visit the web app URL (provide URL here).
+1. Visit the web app URL https://ppttext-extractor.onrender.com.
 
 2. Click the "Choose File" button to select the PPTX file you want to extract text from.
 
