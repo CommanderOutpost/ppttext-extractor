@@ -49,12 +49,9 @@ button:hover {
   background-color: rgb(37, 70, 3);
 }
 .output-text-container {
-  /* display: none; */
-  width: 500px; /* Set the width as needed */
-  height: 300px; /* Set the height as needed */
-  overflow: auto; /* Add a scroll bar when content overflows */
-  border: 1px solid #ccc; /* Add a border for aesthetics */
+  height: 300px;
+  overflow: auto;
+  border: 1px solid #ccc;
   background-color: white;
-  box-sizing: border-box;
   padding: 20px;
 }
