@@ -1,7 +1,13 @@
 const form = document.getElementById("form");
 const outputTextArea = document.querySelector('.output-text-container');
+const copyTextButton = document.querySelector('.copy-btn');
 
 form.addEventListener("submit", submitForm);
+
+copyTextButton.addEventListener("click", async () => {
+    await copyText(outputTextArea);
+    setCopyButtonText();
+})
 
 // This asynchronous function is responsible for uploading a file to the server.
 async function extractText(data) {

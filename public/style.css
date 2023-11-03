@@ -55,3 +55,18 @@ button:hover {
   background-color: white;
   padding: 20px;
 }
+.btn-container {
+  text-align: center;
+}
+.copy-btn {
+  border: none;
+  background: rgb(37, 83, 3);
+  font-size: 18px;
+  color: white;
+  border-radius: 3px;
+  padding: 20px;
+  text-align: center;
+}
+.copy-btn:hover {
+  background-color: rgb(37, 70, 3);
+}
