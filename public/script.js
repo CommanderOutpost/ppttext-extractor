@@ -1,13 +1,18 @@
 const form = document.getElementById("form");
 const outputTextArea = document.querySelector('.output-text-container');
 const copyTextButton = document.querySelector('.copy-btn');
+const downloadTextButton = document.querySelector('.download-btn');
 
 form.addEventListener("submit", submitForm);
 
 copyTextButton.addEventListener("click", async () => {
     await copyText(outputTextArea);
     setCopyButtonText();
-})
+});
+
+downloadTextButton.addEventListener("click", () => {
+    downloadFile(getFileName(), outputTextArea.innerHTML);
+});
 
 // This asynchronous function is responsible for uploading a file to the server.
 async function extractText(data) {

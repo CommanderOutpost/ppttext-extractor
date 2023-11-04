@@ -58,7 +58,7 @@ button:hover {
 .btn-container {
   text-align: center;
 }
-.copy-btn {
+.copy-btn, .download-btn {
   border: none;
   background: rgb(37, 83, 3);
   font-size: 18px;
@@ -67,6 +67,7 @@ button:hover {
   padding: 20px;
   text-align: center;
 }
-.copy-btn:hover {
+
+.copy-btn:hover, .download-btn:hover {
   background-color: rgb(37, 70, 3);
 }
