@@ -2,16 +2,26 @@ const form = document.getElementById("form");
 const outputTextArea = document.querySelector('.output-text-container');
 const copyTextButton = document.querySelector('.copy-btn');
 const downloadTextButton = document.querySelector('.download-btn');
+const submitButton = document.querySelector('.submit-btn');
 
-form.addEventListener("submit", submitForm);
+submitButton.addEventListener("click", submitForm);
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+});
 
 copyTextButton.addEventListener("click", async () => {
-    await copyText(outputTextArea);
-    setCopyButtonText();
+    if (outputTextArea.innerHTML.length > 0 && outputTextArea.innerHTML !== 'undefined') {
+        await copyText(outputTextArea);
+        setCopyButtonText();
+    }
 });
 
 downloadTextButton.addEventListener("click", () => {
-    downloadFile(getFileName(), outputTextArea.innerHTML);
+    if (outputTextArea.innerHTML.length > 0 && outputTextArea.innerHTML !== 'undefined') {
+        downloadFile(getFileName(), outputTextArea.innerHTML);
+        return
+    }
 });
 
 // This asynchronous function is responsible for uploading a file to the server.
@@ -41,6 +51,7 @@ function submitForm(e) {
     // Prevent the default form submission behavior, which would cause a page reload.
     e.preventDefault();
 
+    submitButton.removeEventListener('submit', submitForm);
     // Get references to and "files" input elements in the form.
     const files = document.getElementById("files");
 
@@ -59,5 +70,6 @@ function submitForm(e) {
 async function renderExtractedText(data) {
     const extractedText = await extractText(data);
     outputTextArea.innerHTML = extractedText;
+    submitButton.addEventListener('submit', submitForm);
     // outputTextArea.display = 'block';
 }
