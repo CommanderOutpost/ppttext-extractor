@@ -25,7 +25,7 @@ To get started with the PPTText Extractor, follow these simple steps:
 
 3. Press the "Extract" button, and the web app will process the file and display the extracted text.
 
-4. Click the Copy Text button to copy the displayed text.
+4. Click the 'Copy Text' button to copy the displayed text or the 'Download' button to download the text as a txt file.
 
 ## 4. Usage
 This web app can be used in various scenarios:
