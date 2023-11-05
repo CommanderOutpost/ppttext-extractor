@@ -7,13 +7,13 @@ const errorhandler = require('errorhandler');
 const apiRouter = express.Router();
 
 // Import specific routers for different parts of the API.
-const powerpointRouter = require('./powerpointRouter'); // Handles PowerPoint-related routes.
+const extractRouter = require('./extractRouter'); // Handles PowerPoint-related routes.
 
 // Use Morgan middleware for logging HTTP request details in a 'dev' format.
 apiRouter.use(morgan('dev'));
 
 // Mount the 'powerpointRouter' at the '/extract/powerpoint' endpoint.
-apiRouter.use('/extract/powerpoint', powerpointRouter);
+apiRouter.use('/extract', extractRouter);
 
 // Error handling middleware to catch and handle errors in the API.
 apiRouter.use(

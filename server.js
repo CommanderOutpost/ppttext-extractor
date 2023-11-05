@@ -23,14 +23,6 @@ const app = express();
 // Define the port where the server will listen.
 const PORT = process.env.PORT || 4001;
 
-// Serve static files from the 'public' directory under the '/public' path.
-app.use('/public', express.static('public'));
-
-// Serve the 'index.html' file as the root route ('/') of the application.
-app.get('/', (req, res, next) => {
-  res.sendFile('index.html', { root: __dirname });
-});
-
 // Middleware for handling Cross-Origin Resource Sharing (CORS) requests.
 app.use(cors());
 
