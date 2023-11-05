@@ -8,10 +8,12 @@ const path = require('path');
 function fileFilter(req, file, cb) {
     const extname = path.extname(file.originalname).toLowerCase();
     if (extname === '.ppt' || extname === '.pptx') {
-        return cb(null, true);
+      return cb(null, true);
     }
-    cb(new Error('Only .ppt and .pptx files are allowed!'));
-}
+    const error = new Error('Only .ppt and .pptx files are allowed!');
+    error.status = 400;
+    cb(error);
+  }
 
 const storage = multer.diskStorage({
     destination: 'server/uploads/',
