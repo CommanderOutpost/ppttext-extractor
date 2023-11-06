@@ -7,10 +7,10 @@ const path = require('path');
 // Define a function to filter file types
 function fileFilter(req, file, cb) {
     const extname = path.extname(file.originalname).toLowerCase();
-    if (extname === '.ppt' || extname === '.pptx') {
+    if (extname === '.pptx') {
       return cb(null, true);
     }
-    const error = new Error('Only .ppt and .pptx files are allowed!');
+    const error = new Error('Only .pptx files are allowed!');
     error.status = 400;
     cb(error);
   }
