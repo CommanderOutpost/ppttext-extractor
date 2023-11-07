@@ -1,5 +1,5 @@
 # ppttext-extractor
-Welcome to the PPTText Extractor, a web application that allows you to easily extract text from PowerPoint (PPTX) files. This web app is a handy tool for those, who want to work with text data from presentations.
+Welcome to the PPTText Extractor, an api that allows you to easily extract text from PowerPoint (PPTX) files. This api is a handy tool for those, who want to work with text data from presentations.
 
 ## Table of Contents
 1. Introduction
@@ -9,12 +9,12 @@ Welcome to the PPTText Extractor, a web application that allows you to easily ex
 5. Technical Details
 
 ## 1. Introduction
-In the field of software engineering, you may often come across PPTX files containing valuable information. This web app simplifies the process of extracting text from these files, making it easier for you to work with the data in your software projects.
+In the field of software engineering, you may often come across PPTX files containing valuable information. This api simplifies the process of extracting text from these files, making it easier for you to work with the data in your software projects.
 
 ## 2. Features
-* Easy Text Extraction: The main feature of this web app is the ability to extract text content from PPTX files with just a few clicks.
+* Easy Text Extraction: The main feature of this web app is the ability to extract text content from PPTX files with a single call.
 
-* User-Friendly Interface: The web app has a simple and intuitive user interface, making it accessible to users of all levels of technical expertise.
+* Speedy Extraction: The api is fast and takes very little time to extract text relative to the PPTX file size.
 
 ## 3. Getting Started
 To get started with the PPTText Extractor, follow these simple steps:
@@ -37,8 +37,6 @@ This web app can be used in various scenarios:
 * Data Extraction: Easily convert presentation text into structured data for further processing.
 
 ## 5. Technical Details
-* Backend: The app's backend is built using node.js and python with the express framework on node.js.
-
-* Frontend: The user interface is designed with HTML, CSS and JavaScript.
+* Build: The api is built using node.js and python with the express framework on node.js.
 
 * Text Extraction: Text extraction from PPTX files is achieved using python-pptx.
