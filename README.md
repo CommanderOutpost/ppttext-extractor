@@ -24,6 +24,8 @@ This web app can be used in various scenarios:
 
 * Data Extraction: Easily convert presentation text into structured data for further processing.
 
+This api can be tested at this [site](ppttext-extractor.onrender.com) with a frontend.
+
 ## 4. Technical Details
 * Build: The api is built using node.js and python with the express framework on node.js.
 
