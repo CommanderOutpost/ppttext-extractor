@@ -1,4 +1,4 @@
-# ppttext-extractor
+
 Welcome to the PPTText Extractor, an api that allows you to easily extract text from PowerPoint (PPTX) files. This api is a handy tool for those, who want to work with text data from presentations.
 
 ## Table of Contents
