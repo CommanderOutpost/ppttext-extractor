@@ -2,20 +2,6 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const { spawnSync } = require('child_process');
-
-
-try {
-  const pythonProcess = spawnSync('python3', [`server/scripts/install_package.py`], { stdio: 'inherit' });
-  const error = pythonProcess.stderr?.toString()?.trim();
-
-  if (error) {
-    console.error(error);
-  }
-
-} catch (error) {
-  console.error(error);
-}
 
 // Create an Express application.
 const app = express();
@@ -24,18 +10,27 @@ const app = express();
 const PORT = process.env.PORT || 4001;
 
 // Middleware for handling Cross-Origin Resource Sharing (CORS) requests.
-app.use(cors());
+// Set CORS_ORIGIN to a comma-separated allowlist in production.
+const corsOrigin = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(',').map((origin) => origin.trim())
+  : '*';
+app.use(cors({ origin: corsOrigin }));
 
 // Middleware for parsing JSON request bodies.
 app.use(bodyParser.json());
+
+// Liveness probe for hosting platforms.
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
 
 // Mount the 'apiRouter' at the '/api' path, handling API routes.
 const apiRouter = require('./server/api');
 app.use('/api', apiRouter);
 
-// Conditional block for starting the server only when this module is not being imported.
-if (!module.parent) {
-  // Start the server and listen on the defined PORT.
+// Start the server only when this file is run directly, not when it is imported
+// by the tests.
+if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`Server listening at port ${PORT}`);
   });

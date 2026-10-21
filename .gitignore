@@ -1,2 +1,6 @@
 node_modules/
 server/uploads/
+server/extracted_text.txt
+__pycache__/
+*.pyc
+.env
